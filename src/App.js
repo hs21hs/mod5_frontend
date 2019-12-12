@@ -50,17 +50,42 @@ class App extends Component {
       if (this.state.page === "my ads"){
         return <MyAds state = {this.state} handleDelete = {this.deleteAd} />
       }
+
+      if (this.state.page === "all ads"){
+        return <AllAds state = {this.state} handleDelete = {this.deleteAd} handleAllAdsFilterSubmit = {this.allAdsFilterSubmit}/>
+      }
      
     }
+    
+    allAdsFilterSubmit = (e) => {
+      e.preventDefault()
+      console.log (e.target.elements.select.value)
+      console.log (e.target.elements.postcode.value)
+      const radius = e.target.elements.select.value
+      const postcode = e.target.elements.postcode.value
+      const filter = {radius: radius, postcode: postcode}
+
+      fetch("http://localhost:3000/ads/filter",{method: "POST",
+      headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+      },
+      
+      body: JSON.stringify(filter)
+      })
+        .then((resp) => resp.json())
+        .then((json) => console.log(json))
+
+  }
 
   render(){
   return (
     <div >
       <button onClick = {() => {this.switchPage("my ads")}}>my ads</button>
       <button onClick = {() => {this.switchPage("donate")}}>donate</button>
+      <button onClick = {() => {this.switchPage("all ads")}}>all ads</button>
     <h1>test</h1>
      {this.whichPage()}
-     <AllAds/>
     </div>
   );
 }

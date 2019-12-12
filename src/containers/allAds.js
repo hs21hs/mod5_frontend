@@ -10,8 +10,8 @@ class MyAds extends Component {
     render(){
         return (
             <div>
-                <h1> ads page</h1>
-                <AllAdsFilter />
+                <h1> all ads page</h1>
+                <AllAdsFilter handleSubmit={this.props.handleAllAdsFilterSubmit}/>
                 {this.showAds()}
             </div>
           

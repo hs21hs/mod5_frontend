@@ -6,16 +6,12 @@ class AllAdsFilter extends Component {
         return radiuses.map((radius) => {return <option>{radius}</option>})
     }
 
-    handleSubmit = (e) => {
-        e.preventDefault()
-        console.log (e.target.elements.select.value)
-        console.log (e.target.elements.postcode.value)
-    }
+    
 
   render(){
   return (
    <div>
-        <form onSubmit = {this.handleSubmit}>
+        <form onSubmit = {this.props.handleSubmit}>
             <input placeholder = "postcode" name = "postcode"></input>
             <label>radius</label>
             <select name = "select">
