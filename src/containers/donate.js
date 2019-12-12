@@ -5,14 +5,26 @@ class Donate extends Component {
     state = {showNewAd: false}
 
     createAd = (e) => {
-        
-        const ad = 
+        let ad = {}
+        if ((e.target.elements.postcode)){
+             ad = 
         {
             ad:{
                 food_name: e.target.elements.name.value,
+                postcode: e.target.elements.postcode.value,
                 giver_id: this.props.state.currentGiverId,
             }
         }
+        }else{  ad = 
+            {
+                
+                ad:{
+                    food_name: e.target.elements.name.value,
+                    giver_id: this.props.state.currentGiverId,
+                }
+            }}
+            
+             
 
         fetch("http://localhost:3000/ads", {method: "POST",
         headers: {

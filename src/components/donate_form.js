@@ -2,12 +2,22 @@ import React, { Component } from 'react';
 
 class DonateForm extends Component {
     state = {
-        selfDelivery: "no"
+        selfDelivery: "no",
+        selfPostcode: "true"
     }
     
     bindSelfDelivery = (e) => {
         this.setState({selfDelivery: e.target.value})
         
+    }
+    bindSelfPostcode = (e) => {
+        this.setState({selfPostcode: e.target.value})
+        
+    }
+    filterFormOrNot = () => {
+        if(this.state.selfPostcode === "false"){
+            return <input placeholder = "postcode" name = "postcode"/>
+        }
     }
 
     addOrDonate = () =>{
@@ -22,12 +32,18 @@ class DonateForm extends Component {
                             <option>yes</option>
                         </select>
                         
-                        <input placeholder = "name" name = "name" type = "text" />
-                        <input placeholder = "address" type = "text" />
-                        <input placeholder = "postcode" name = "postcode" type = "text" />
+                        <select name = "select1" value = {this.state.selfPostcode} onChange ={this.bindSelfPostcode}>
+                            <option value = "true">use my home postcode as the pick up location for this ad</option>
+                            <option value = "false">set custom postcode as the pick up location for this ad</option>
+                        </select>
+
+                        {this.filterFormOrNot()}
+
+                        <input placeholder = "food name" name = "name" type = "text" />
+                        
                         <br/>
                         
-                        <button type = "submit"> submit</button>
+                        <button type = "submit"> submit advert</button>
                     </form>
                     
                 </div>
@@ -45,13 +61,11 @@ class DonateForm extends Component {
                             <option>yes</option>
                         </select>
 
-                        <input placeholder = "name" name = "name" type = "text" />
+                        <input placeholder = "food name" name = "name" type = "text" />
                         <input placeholder = "foodbank" type = "text" />
-                        <input placeholder = "address" type = "text" />
-                        <input placeholder = "postcode" name = "postcode" type = "text" />
                         <br/>
                         
-                        <button type = "submit"> submit</button>
+                        <button type = "submit"> create delivery</button>
                     </form>
                     
                 </div>
