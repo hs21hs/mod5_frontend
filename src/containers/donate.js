@@ -12,7 +12,7 @@ class Donate extends Component {
             ad:{
                 food_name: e.target.elements.name.value,
                 postcode: e.target.elements.postcode.value,
-                giver_id: this.props.state.currentGiverId,
+                user_id: this.props.state.currentUserId,
             }
         }
         }else{  ad = 
@@ -20,7 +20,7 @@ class Donate extends Component {
                 
                 ad:{
                     food_name: e.target.elements.name.value,
-                    giver_id: this.props.state.currentGiverId,
+                    user_id: this.props.state.currentUserId,
                 }
             }}
             
