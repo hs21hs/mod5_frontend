@@ -11,6 +11,7 @@ class App extends Component {
     currentGiverId: 1,
     currentRiderId: 1,
     myAds: undefined,
+    allAds: undefined,
     page: "donate"
   }
   
@@ -18,6 +19,8 @@ class App extends Component {
         fetch("http://localhost:3000/my_ads")
             .then(resp => resp.json())
             .then(json => this.setState({myAds: json}))
+
+            fetch("http://localhost:3000/")
     }
 
     newAd = (json) => {
@@ -59,8 +62,7 @@ class App extends Component {
     
     allAdsFilterSubmit = (e) => {
       e.preventDefault()
-      console.log (e.target.elements.select.value)
-      console.log (e.target.elements.postcode.value)
+
       const radius = e.target.elements.select.value
       const postcode = e.target.elements.postcode.value
       const filter = {radius: radius, postcode: postcode}
@@ -74,8 +76,7 @@ class App extends Component {
       body: JSON.stringify(filter)
       })
         .then((resp) => resp.json())
-        .then((json) => console.log(json))
-
+        .then((json) => this.setState({allAds: json}))
   }
 
   render(){

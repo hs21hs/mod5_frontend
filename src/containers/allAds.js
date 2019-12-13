@@ -5,7 +5,11 @@ import AllAdsFilter from '../components/all_ads_filter';
 class MyAds extends Component {
 
     showAds = () => {
-    
+        if(this.props.state.allAds){
+            return this.props.state.allAds.map((ad) => {
+                return <Ad ad = {ad} key ={ad.id} ad_id = {ad.id} handleDelete = {this.props.handleDelete}/>
+            })
+        }
     }
     render(){
         return (
