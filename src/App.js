@@ -4,6 +4,7 @@ import Donate from './containers/donate';
 import MyAds from './containers/myAds';
 import AllAds from './containers/allAds';
 import AllAdsFilter from './components/all_ads_filter';
+import Login from './containers/login';
 
 class App extends Component {
   state = {
@@ -15,12 +16,13 @@ class App extends Component {
     page: "donate"
   }
   
-    componentDidMount(){
-        fetch("http://localhost:3000/my_ads")
+    getMyAds = () => {
+      fetch("http://localhost:3000/my_ads",
+      {headers: {
+        Authorisation: localStorage.getItem("token")
+      }})
             .then(resp => resp.json())
             .then(json => this.setState({myAds: json}))
-
-            fetch("http://localhost:3000/")
     }
 
     newAd = (json) => {
@@ -31,6 +33,10 @@ class App extends Component {
 
     switchPage = (page) => {
       this.setState({page: page})
+
+      if (page === "my ads"){
+        this.getMyAds()
+      }
     }
 
     deleteAd = (ad_id) => {
@@ -38,7 +44,8 @@ class App extends Component {
       fetch("http://localhost:3000/ads/"+ad_id, {method: "DELETE",
         headers: {
             "Content-Type": "application/json",
-            "Accept": "application/json"
+            "Accept": "application/json",
+            Authorisation: localStorage.getItem("token")
         }
        })
        .then(this.setState({myAds: this.state.myAds.filter((ad) => {return ad.id !== ad_id})}))
@@ -57,7 +64,16 @@ class App extends Component {
       if (this.state.page === "all ads"){
         return <AllAds state = {this.state} handleDelete = {this.deleteAd} handleAllAdsFilterSubmit = {this.allAdsFilterSubmit}/>
       }
+
+      if (this.state.page === "login"){
+        return <Login />
+      }
      
+      if (this.state.page === "logout"){
+        localStorage.removeItem("token")
+        return <Login />
+      }
+
     }
     
     allAdsFilterSubmit = (e) => {
@@ -70,7 +86,8 @@ class App extends Component {
       fetch("http://localhost:3000/ads/filter",{method: "POST",
       headers: {
           "Content-Type": "application/json",
-          "Accept": "application/json"
+          "Accept": "application/json",
+          Authorisation: localStorage.getItem("token")
       },
       
       body: JSON.stringify(filter)
@@ -85,6 +102,8 @@ class App extends Component {
       <button onClick = {() => {this.switchPage("my ads")}}>my ads</button>
       <button onClick = {() => {this.switchPage("donate")}}>donate</button>
       <button onClick = {() => {this.switchPage("all ads")}}>all ads</button>
+      <button onClick = {() => {this.switchPage("login")}}>login</button>
+      <button onClick = {() => {this.switchPage("logout")}}>logout</button>
     <h1>test</h1>
      {this.whichPage()}
     </div>

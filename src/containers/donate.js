@@ -29,7 +29,8 @@ class Donate extends Component {
         fetch("http://localhost:3000/ads", {method: "POST",
         headers: {
             "Content-Type": "application/json",
-            "Accept": "application/json"
+            "Accept": "application/json",
+            Authorisation: localStorage.getItem("token")
         },
         
         body: JSON.stringify(ad)
