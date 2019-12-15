@@ -5,7 +5,7 @@ class Donate extends Component {
     state = {showNewAd: false}
 
     createAd = (e) => {
-        let ad = {}
+            let ad = {}
         if ((e.target.elements.postcode)){
              ad = 
         {
@@ -39,6 +39,9 @@ class Donate extends Component {
         .then(json => this.props.newAd(json))
         .then(() => this.setState({showNewAd: true}))
     }
+
+        
+    
     
     createDelivery = (e) => {
         const delivery = 

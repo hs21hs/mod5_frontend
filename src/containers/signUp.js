@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 
-class Login extends Component {
+class SignUp extends Component {
 
     state = {
         email: undefined,
@@ -13,7 +13,7 @@ class Login extends Component {
         e.preventDefault()
         const details = {user:{password: this.state.password, email:this.state.email}}
 
-        fetch("http://localhost:3000/login", {method: "POST",
+        fetch("http://localhost:3000/users", {method: "POST",
         headers: {
             "Content-Type": "application/json",
             "Accept": "application/json"
@@ -23,7 +23,7 @@ class Login extends Component {
         }).then(resp => resp.json())
         .then((json) => {if (! json.errors){localStorage.setItem("token",json.token)}})
         .then((x)=> {if (localStorage.getItem("token")){
-            this.props.handleLogin()
+            this.props.handleSignUp()
         }else{
             this.setState({error: true})
         }})
@@ -48,7 +48,7 @@ class Login extends Component {
     render(){
         return (
             <div>
-                <h1>login page</h1>
+                <h1>sign up page</h1>
                 <form onSubmit={this.handleSubmit}>
       
       <input
@@ -75,4 +75,4 @@ class Login extends Component {
 
 }
 
-export default Login;
+export default SignUp;

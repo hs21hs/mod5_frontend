@@ -5,15 +5,21 @@ import MyAds from './containers/myAds';
 import AllAds from './containers/allAds';
 import AllAdsFilter from './components/all_ads_filter';
 import Login from './containers/login';
+import SignUp from './containers/signUp';
 
 class App extends Component {
   state = {
-    currentUserId: 1,
-    currentGiverId: 1,
-    currentRiderId: 1,
     myAds: undefined,
     allAds: undefined,
-    page: "donate"
+    page: "login"
+  }
+
+  componentDidMount = () => {
+    if(localStorage.getItem("token")){
+      
+      this.setState({page: "donate"})
+      this.getMyAds()
+    }
   }
   
     getMyAds = () => {
@@ -52,6 +58,14 @@ class App extends Component {
        
     }
 
+    login = ()=> {
+      this.setState({page: "donate"})
+    }
+
+    signUp = ()=> {
+      this.setState({page: "donate"})
+    }
+
     whichPage = () => {
       if (this.state.page === "donate"){
         return <Donate state = {this.state} newAd = {this.newAd} />
@@ -62,16 +76,21 @@ class App extends Component {
       }
 
       if (this.state.page === "all ads"){
-        return <AllAds state = {this.state} handleDelete = {this.deleteAd} handleAllAdsFilterSubmit = {this.allAdsFilterSubmit}/>
+        return <AllAds state = {this.state} handleAllAdsFilterSubmit = {this.allAdsFilterSubmit}/>
       }
 
       if (this.state.page === "login"){
-        return <Login />
+        return <Login handleLogin = {this.login}/>
       }
      
       if (this.state.page === "logout"){
+        this.setState({myAds: undefined, allAds: undefined})
         localStorage.removeItem("token")
-        return <Login />
+        this.setState({page: "login"})
+      }
+
+      if (this.state.page === "sign up"){
+        return <SignUp handleSignUp = {this.signUp}/>
       }
 
     }
@@ -87,7 +106,7 @@ class App extends Component {
       headers: {
           "Content-Type": "application/json",
           "Accept": "application/json",
-          Authorisation: localStorage.getItem("token")
+         
       },
       
       body: JSON.stringify(filter)
@@ -96,14 +115,30 @@ class App extends Component {
         .then((json) => this.setState({allAds: json}))
   }
 
-  render(){
-  return (
-    <div >
+  navBar = () => {
+    if(this.state.page === "login" || this.state.page === "sign up"){
+      return(
+        <div>
+          <button onClick = {() => {this.switchPage("login")}}>login</button>
+          <button onClick = {() => {this.switchPage("sign up")}}>sign up</button>
+        </div>
+      )
+    }else{
+    return(
+    <div>
       <button onClick = {() => {this.switchPage("my ads")}}>my ads</button>
       <button onClick = {() => {this.switchPage("donate")}}>donate</button>
       <button onClick = {() => {this.switchPage("all ads")}}>all ads</button>
-      <button onClick = {() => {this.switchPage("login")}}>login</button>
       <button onClick = {() => {this.switchPage("logout")}}>logout</button>
+    </div>
+    )
+    }
+  }
+
+  render(){
+  return (
+    <div >
+      {this.navBar()}
     <h1>test</h1>
      {this.whichPage()}
     </div>

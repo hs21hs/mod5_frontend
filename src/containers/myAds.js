@@ -7,6 +7,7 @@ class MyAds extends Component {
 
     showAds = () => {
     if(this.props.state.myAds){
+        
         return this.props.state.myAds.map((ad) => {
             return <Ad ad = {ad} key ={ad.id} ad_id = {ad.id} handleDelete = {this.props.handleDelete}/>
         })
