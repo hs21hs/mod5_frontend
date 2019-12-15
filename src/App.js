@@ -6,11 +6,16 @@ import AllAds from './containers/allAds';
 import AllAdsFilter from './components/all_ads_filter';
 import Login from './containers/login';
 import SignUp from './containers/signUp';
+import myDeliveries from './containers/my_deliveries';
+import MyDeliveries from './containers/my_deliveries';
 
 class App extends Component {
   state = {
-    myAds: undefined,
-    allAds: undefined,
+    myAds: [],
+    allAds: [],
+    myDeliveries: [],
+    myDeliveriesStatus: undefined,
+    myDeliveriesType: undefined,
     page: "login"
   }
 
@@ -94,9 +99,13 @@ class App extends Component {
       if (this.state.page === "login"){
         return <Login handleLogin = {this.login}/>
       }
+
+      if (this.state.page === "my deliveries"){
+        return <MyDeliveries getMyDeliveries= {this.myDeliveries} state = {this.state}/>
+      }
      
       if (this.state.page === "logout"){
-        this.setState({myAds: undefined, allAds: undefined})
+        this.setState({myAds: [], allAds: []})
         localStorage.removeItem("token")
         this.setState({page: "login"})
       }
@@ -141,6 +150,7 @@ class App extends Component {
       <button onClick = {() => {this.switchPage("my ads")}}>my ads</button>
       <button onClick = {() => {this.switchPage("donate")}}>donate</button>
       <button onClick = {() => {this.switchPage("all ads")}}>all ads</button>
+      <button onClick = {() => {this.switchPage("my deliveries")}}>my deliveries</button>
       <button onClick = {() => {this.switchPage("logout")}}>logout</button>
       <button onClick = {() => {this.deleteUser()}}>delete my account</button>
     </div>
@@ -164,6 +174,26 @@ class App extends Component {
 
   }
 
+  myDeliveries = (e) => {
+    e.preventDefault()
+const type = e.target.elements.type.value
+const status = e.target.elements.status.value
+const filter = {type: type, status: status}
+    fetch("http://localhost:3000/my_deliveries", {method: "POST",
+    headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+        Authorisation: localStorage.getItem("token")
+    },
+    
+    body: JSON.stringify(filter)
+    })
+    .then(resp => resp.json())
+    .then(json => this.setState({myDeliveries: json}))
+    .then((x) => {this.setState({myDeliveriesStatus: status, myDeliveriesType: type})})
+    
+     
+  }
 
   render(){
   return (
