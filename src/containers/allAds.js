@@ -11,7 +11,7 @@ class MyAds extends Component {
                 return <h1>error finding ads</h1>
             }else{
                 return this.props.state.allAds.map((ad) => {
-                    return <Ad ad = {ad} key ={ad.id} ad_id = {ad.id} />
+                    return <Ad ad = {ad} key ={ad.id} ad_id = {ad.id} handleAcceptAd = {this.props.handleAcceptAd}/>
                 })
             }
         }

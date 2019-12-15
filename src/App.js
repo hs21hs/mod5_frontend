@@ -46,7 +46,6 @@ class App extends Component {
     }
 
     deleteAd = (ad_id) => {
-      console.log(ad_id)
       fetch("http://localhost:3000/ads/"+ad_id, {method: "DELETE",
         headers: {
             "Content-Type": "application/json",
@@ -55,6 +54,19 @@ class App extends Component {
         }
        })
        .then(this.setState({myAds: this.state.myAds.filter((ad) => {return ad.id !== ad_id})}))
+       
+    }
+
+    deleteUser = () => {
+      fetch("http://localhost:3000/users/delete", {method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+            Authorisation: localStorage.getItem("token")
+        }
+       })
+       .then((v) => {localStorage.removeItem("token")
+         this.setState({page: "login"})})
        
     }
 
@@ -76,7 +88,7 @@ class App extends Component {
       }
 
       if (this.state.page === "all ads"){
-        return <AllAds state = {this.state} handleAllAdsFilterSubmit = {this.allAdsFilterSubmit}/>
+        return <AllAds state = {this.state} handleAllAdsFilterSubmit = {this.allAdsFilterSubmit} handleAcceptAd = {this.acceptAd}/>
       }
 
       if (this.state.page === "login"){
@@ -130,10 +142,28 @@ class App extends Component {
       <button onClick = {() => {this.switchPage("donate")}}>donate</button>
       <button onClick = {() => {this.switchPage("all ads")}}>all ads</button>
       <button onClick = {() => {this.switchPage("logout")}}>logout</button>
+      <button onClick = {() => {this.deleteUser()}}>delete my account</button>
     </div>
     )
     }
   }
+
+  acceptAd = (aid) => {
+    console.log(aid)
+
+      fetch("http://localhost:3000/rdeliveries", {method: "POST",
+      headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json",
+          Authorisation: localStorage.getItem("token")
+      },
+      
+      body: JSON.stringify({ad_id: aid})
+      })
+  
+
+  }
+
 
   render(){
   return (

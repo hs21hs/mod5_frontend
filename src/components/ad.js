@@ -8,6 +8,12 @@ class Ad extends Component {
     }
   }
   
+  acceptAdButton = () => {
+    if (this.props.handleAcceptAd){
+    return <button onClick = {() => {this.props.handleAcceptAd(this.props.ad.id)}}>accept ad and make a delivery!</button>
+    }
+  }
+
   render(){
   return (
    <div>
@@ -15,6 +21,7 @@ class Ad extends Component {
         <p>food name: {this.props.ad.food_name}</p>
         <p>post code: {this.props.ad.postcode}</p>
         {this.deleteButton()}
+        {this.acceptAdButton()}
        <h1></h1>
    </div>
 

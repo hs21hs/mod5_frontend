@@ -47,16 +47,15 @@ class Donate extends Component {
         const delivery = 
         {
             delivery:{
-                rider_id:this.props.state.currentRiderId,
-                giver_id:this.props.state.currentGiverId,
                 food_bank_id:1,
             }
         }
 
-        fetch("http://localhost:3000/deliveries", {method: "POST",
+        fetch("http://localhost:3000/gdeliveries", {method: "POST",
         headers: {
             "Content-Type": "application/json",
-            "Accept": "application/json"
+            "Accept": "application/json",
+            Authorisation: localStorage.getItem("token")
         },
         
         body: JSON.stringify(delivery)
