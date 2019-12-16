@@ -9,7 +9,7 @@ class MyAds extends Component {
     if(this.props.state.myAds){
         
         return this.props.state.myAds.map((ad) => {
-            return <Ad ad = {ad} key ={ad.id} ad_id = {ad.id} handleDelete = {this.props.handleDelete}/>
+            return <Ad ad = {ad} key ={ad.id} ad_id = {ad.id} handleDelete = {this.props.handleDelete} toggleActive = {this.props.toggleActive}/>
         })
     }
     }

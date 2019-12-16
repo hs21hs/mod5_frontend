@@ -87,7 +87,7 @@ class App extends Component {
       }
       
       if (this.state.page === "my ads"){
-        return <MyAds state = {this.state} handleDelete = {this.deleteAd} />
+        return <MyAds state = {this.state} handleDelete = {this.deleteAd} toggleActive = {this.toggleActive}/>
       }
 
       if (this.state.page === "all ads"){
@@ -125,7 +125,7 @@ class App extends Component {
       headers: {
           "Content-Type": "application/json",
           "Accept": "application/json",
-         
+          Authorisation: localStorage.getItem("token")         
       },
       
       body: JSON.stringify(filter)
@@ -190,6 +190,25 @@ const filter = {type: type, status: status}
     .then((x) => {this.setState({myDeliveriesStatus: status, myDeliveriesType: type})})
     
      
+  }
+
+  toggleActive = (aid) => {
+    console.log(aid)
+    const a = {ad_id: aid}
+    fetch("http://localhost:3000/ads/update_active", {method: "PATCH",
+    headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+        Authorisation: localStorage.getItem("token")
+    },
+    
+    body: JSON.stringify(a)
+    })
+    .then((resp)=>resp.json())
+    .then((json)=>{
+      const myNewAds = this.state.myAds.filter((ad)=>{if(ad.id !== json.id){return true}})
+      this.setState({myAds:[...myNewAds, json]})
+    })
   }
 
   render(){
