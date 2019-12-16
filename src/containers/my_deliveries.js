@@ -7,8 +7,8 @@ class MyDeliveries extends Component {
     showDeliveries = () => {
     if(this.props.state.myDeliveries){
         
-        return this.props.state.myDeliveries.map((delivery) => {
-            return <Delivery delivery = {delivery} key ={delivery.id} delivery_id = {delivery.id} />
+        return this.props.state.myDeliveries.map((dobj) => {
+            return <Delivery dobj = {dobj} key ={dobj.delivery.id} delivery_id = {dobj.delivery.id} />
         })
     }
     }

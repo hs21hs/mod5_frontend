@@ -37,9 +37,7 @@ class App extends Component {
     }
 
     newAd = (json) => {
-      
       this.setState({myAds: [...this.state.myAds, json]})
-      
     }
 
     switchPage = (page) => {
@@ -158,8 +156,7 @@ class App extends Component {
     }
   }
 
-  acceptAd = (aid) => {
-    console.log(aid)
+  acceptAd = (ad) => {
 
       fetch("http://localhost:3000/rdeliveries", {method: "POST",
       headers: {
@@ -168,7 +165,7 @@ class App extends Component {
           Authorisation: localStorage.getItem("token")
       },
       
-      body: JSON.stringify({ad_id: aid})
+      body: JSON.stringify({ad: ad})
       })
   
 

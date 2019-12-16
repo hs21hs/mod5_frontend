@@ -10,7 +10,7 @@ class Ad extends Component {
   
   acceptAdButton = () => {
     if (this.props.handleAcceptAd){
-    return <button onClick = {() => {this.props.handleAcceptAd(this.props.ad.id)}}>accept ad and make a delivery!</button>
+    return <button onClick = {() => {this.props.handleAcceptAd(this.props.ad)}}>accept ad and make a delivery!</button>
     }
   }
 
