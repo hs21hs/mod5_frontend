@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import NewConversationForm from './NewConversationForm';
 
 class Ad extends Component {
 
@@ -16,7 +17,12 @@ class Ad extends Component {
 
   acceptAdButton = () => {
     if (this.props.handleAcceptAd){
-    return <button onClick = {() => {this.props.handleAcceptAd(this.props.ad)}}>accept ad and make a delivery!</button>
+    return (
+    <div>
+      <button onClick = {() => {this.props.handleAcceptAd(this.props.ad)}}>accept ad and make a delivery!</button>
+    <NewConversationForm />
+      </div>
+    )
     }
   }
 

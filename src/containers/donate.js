@@ -36,7 +36,7 @@ class Donate extends Component {
         body: JSON.stringify(ad)
         })
         .then(resp => resp.json())
-        .then(json => this.props.newAd(json))
+        .then(json => this.props.newAd(json.ad))
         .then(() => this.setState({showNewAd: true}))
     }
 

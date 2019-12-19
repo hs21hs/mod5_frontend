@@ -8,6 +8,7 @@ import Login from './containers/login';
 import SignUp from './containers/signUp';
 import myDeliveries from './containers/my_deliveries';
 import MyDeliveries from './containers/my_deliveries';
+import ConversationsList from './components/ConversationsList';
 
 class App extends Component {
   state = {
@@ -217,6 +218,7 @@ const filter = {type: type, status: status}
       {this.navBar()}
     <h1>test</h1>
      {this.whichPage()}
+     <ConversationsList />
     </div>
   );
 }
