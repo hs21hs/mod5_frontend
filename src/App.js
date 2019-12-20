@@ -144,13 +144,13 @@ class App extends Component {
       )
     }else{
     return(
-    <div>
-      <button onClick = {() => {this.switchPage("my ads")}}>my ads</button>
-      <button onClick = {() => {this.switchPage("donate")}}>donate</button>
-      <button onClick = {() => {this.switchPage("all ads")}}>all ads</button>
-      <button onClick = {() => {this.switchPage("my deliveries")}}>my deliveries</button>
-      <button onClick = {() => {this.switchPage("logout")}}>logout</button>
-      <button onClick = {() => {this.deleteUser()}}>delete my account</button>
+    <div class = "nav">
+      <button onClick = {() => {this.switchPage("my ads")}} class = "nbtn">my ads</button>
+      <button onClick = {() => {this.switchPage("donate")}} class = "nbtn">donate</button>
+      <button onClick = {() => {this.switchPage("all ads")}} class = "nbtn">all ads</button>
+      <button onClick = {() => {this.switchPage("my deliveries")}} class = "nbtn">my deliveries</button>
+      <button onClick = {() => {this.switchPage("logout")}} class = "nbtn">logout</button>
+      <button onClick = {() => {this.deleteUser()}} class = "nbtn">delete my account</button>
     </div>
     )
     }
@@ -213,9 +213,9 @@ const filter = {type: type, status: status}
 
   render(){
   return (
-    <div >
+    <div class = "bg">
       {this.navBar()}
-    <h1>test</h1>
+    <h1 class ="test">test</h1>
      {this.whichPage()}
     </div>
   );

@@ -1,3 +1,35 @@
+*{text-align: center;}
+
+*{background-color: white;}
+
+.cmp{background-color: #f0f3e9}
+
+.nav{background-color: #003745;
+  height: 30px;
+  padding: 50px;}
+
+.nbtn{
+  max-width: 320px;
+  padding: 3px 24px;
+  margin-left: 35;
+  margin-right: 35;
+  background: var(--color-buttons-primary-color, #f0f3e9) !important;
+  font-size: 15px;
+  font-size: .9375rem;
+  font-family: sans-serif;
+  font-weight: 700;
+  line-height: 22px;
+  -webkit-font-smoothing: antialiased;
+  color: black;
+  text-align: center;
+  text-decoration: none;
+  cursor: auto;
+  border-radius: 25px;
+  border: none;
+  box-sizing: border-box;
+}
+.test{color:white;}
+
 .App {
   text-align: center;
 }

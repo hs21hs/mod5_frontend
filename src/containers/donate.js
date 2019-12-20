@@ -90,8 +90,9 @@ class Donate extends Component {
 
   render(){
   return (
-    <div>
-        <h1>make a donation page</h1>
+    <div class = "cmp">
+        <h1 class = "cmp">Donate food!</h1>
+        <p class = "cmp">please fill out the details below and wel get your donation underway</p>
          <DonateForm handleSubmit = {this.handleSubmit}/>
          {this.showNewAd()}
          

@@ -25,7 +25,7 @@ class DonateForm extends Component {
             return(
                 <div>
 
-                    <form onSubmit = {this.props.handleSubmit} >
+                    <form onSubmit = {this.props.handleSubmit} class = "cmp" >
                         <label>deliver yourself?</label>
                         <select name = "select" value = {this.state.selfDelivery} onChange ={this.bindSelfDelivery}>
                             <option>no</option>
