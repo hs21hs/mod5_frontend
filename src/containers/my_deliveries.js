@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Delivery from '../components/delivery';
+import ReviewForm from '../components/review_form';
 class MyDeliveries extends Component {
     
   
@@ -8,7 +9,12 @@ class MyDeliveries extends Component {
     if(this.props.state.myDeliveries){
         
         return this.props.state.myDeliveries.map((dobj) => {
-            return <Delivery dobj = {dobj} key ={dobj.delivery.id} delivery_id = {dobj.delivery.id} />
+            return( 
+            <div>
+                <Delivery dobj = {dobj} key ={dobj.delivery.id} delivery_id = {dobj.delivery.id} />
+                <ReviewForm createReview = {this.props.createReview} delivery_id = {dobj.delivery.id}/>
+            </div>
+            )
         })
     }
     }

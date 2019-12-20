@@ -99,7 +99,7 @@ class App extends Component {
       }
 
       if (this.state.page === "my deliveries"){
-        return <MyDeliveries getMyDeliveries= {this.myDeliveries} state = {this.state}/>
+        return <MyDeliveries getMyDeliveries= {this.myDeliveries} state = {this.state} createReview = {this.createReview}/>
       }
      
       if (this.state.page === "logout"){
@@ -210,6 +210,24 @@ const filter = {type: type, status: status}
       this.setState({myAds:[...myNewAds, json]})
     })
   }
+
+  createReview = (e,did)=>{
+    e.preventDefault()
+    
+    const review = {review: {delivery_id: did, rating: e.target.elements.rating.value, content: e.target.elements.content.value}}
+    console.log(review)
+
+    fetch("http://localhost:3000/reviews",{method: "POST",
+      headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json",
+          Authorisation: localStorage.getItem("token")         
+      },
+      body: JSON.stringify(review)
+    })
+    .then((resp)=>resp.json())
+    .then((json)=>{console.log(json)
+  })}
 
   render(){
   return (
