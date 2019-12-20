@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Review from '../components/review';
+import ShowCard from '../components/show_card';
 
 class ShowPage extends Component {
     
@@ -22,19 +23,26 @@ componentDidMount(){
 }
 }
 
-    showReviews = () => {
-    if(this.state.currentShowUsersReviews){
-        
-        return this.state.currentShowUsersReviews.map((review) => {
-            return <Review review = {review}/>
-        })
+    ShowCard = () => {
+        if(this.props.state.currentShowUsersId){
+            return <ShowCard state = {this.props.state}/>
+        }
+        //chuck below in above if incinsistency
     }
+
+    showReviews = () => {
+        if(this.state.currentShowUsersReviews){
+        
+            return this.state.currentShowUsersReviews.map((review) => {
+                return <Review review = {review}/>
+            })
+        }
     }
     render(){
         return (
             <div>
                 <h1> users show page</h1>
-                
+                {this.ShowCard()}
                 {this.showReviews()}
             </div>
           

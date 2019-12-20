@@ -11,7 +11,7 @@ class SignUp extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
-        const details = {user:{password: this.state.password, email:this.state.email}}
+        const details = {user:{password: this.state.password, email:this.state.email, name:this.state.name}}
 
         fetch("http://localhost:3000/users", {method: "POST",
         headers: {
