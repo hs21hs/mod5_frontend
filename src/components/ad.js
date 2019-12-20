@@ -16,11 +16,18 @@ class Ad extends Component {
 
   acceptAdButton = () => {
     if (this.props.handleAcceptAd){
-    return <button onClick = {() => {this.props.handleAcceptAd(this.props.ad)}}>accept ad and make a delivery!</button>
+    return (
+    <div>
+        <button onClick = {() => {this.props.handleAcceptAd(this.props.ad)}}>accept ad and make a delivery!</button>
+        <button onClick = {() => {this.props.showUsersShowPage(this.props.ad.user_id)}}>see this users review page</button>
+      </div>
+    )
     }
   }
 
   activeOrNot = ()=>{if (this.props.ad.active){return "yes"}else{return "no"}}
+
+  
 
   render(){
   return (

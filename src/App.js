@@ -8,6 +8,7 @@ import Login from './containers/login';
 import SignUp from './containers/signUp';
 import myDeliveries from './containers/my_deliveries';
 import MyDeliveries from './containers/my_deliveries';
+import ShowPage from './containers/showPage';
 
 class App extends Component {
   state = {
@@ -16,7 +17,8 @@ class App extends Component {
     myDeliveries: [],
     myDeliveriesStatus: undefined,
     myDeliveriesType: undefined,
-    page: "login"
+    page: "login",
+    currentShowUsersId: null
   }
 
   componentDidMount = () => {
@@ -91,7 +93,7 @@ class App extends Component {
       }
 
       if (this.state.page === "all ads"){
-        return <AllAds state = {this.state} handleAllAdsFilterSubmit = {this.allAdsFilterSubmit} handleAcceptAd = {this.acceptAd}/>
+        return <AllAds state = {this.state} handleAllAdsFilterSubmit = {this.allAdsFilterSubmit} handleAcceptAd = {this.acceptAd} showUsersShowPage = {this.showUsersShowPage}/>
       }
 
       if (this.state.page === "login"){
@@ -110,6 +112,10 @@ class App extends Component {
 
       if (this.state.page === "sign up"){
         return <SignUp handleSignUp = {this.signUp}/>
+      }
+
+      if (this.state.page === "show page"){
+        return <ShowPage state = {this.state}/>
       }
 
     }
@@ -228,6 +234,11 @@ const filter = {type: type, status: status}
     .then((resp)=>resp.json())
     .then((json)=>{console.log(json)
   })}
+
+  showUsersShowPage = (uid) => {
+    console.log(uid)
+this.setState({currentShowUsersId: uid, page: "show page"})
+  }
 
   render(){
   return (

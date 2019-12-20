@@ -37,6 +37,9 @@ class SignUp extends Component {
     setPassword = (value) => {
         this.setState({password: value})
     }
+    setName= (value) => {
+        this.setState({name: value})
+    }
 
     ifErrors = () => {
         if(this.state.error === true){
@@ -58,6 +61,14 @@ class SignUp extends Component {
         value={this.state.email}
         onChange={e => this.setEmail(e.target.value)}
       />
+
+<input
+        placeholder="name"
+        name="name"
+        value={this.state.name}
+        onChange={e => this.setName(e.target.value)}
+      />
+
       <input
         type="password"
         placeholder="Password"
