@@ -21,9 +21,9 @@ class Thumbnail extends Component {
     return(
     <div>
        <h1>tn</h1>
+       <img src= {this.state.currentShowCard.show_user.img} class = "tn_img"/>
        <p>users name:{this.state.currentShowCard.show_user.name}</p>
         <p>users average rating:{this.state.currentShowCard.avg_rating}</p>
-        <img src= {this.state.currentShowCard.show_user.img}/>
     </div>
     )
    }

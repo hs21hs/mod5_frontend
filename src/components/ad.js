@@ -18,10 +18,19 @@ class Ad extends Component {
     if (this.props.handleAcceptAd){
     return (
     <div>
-      <Thumbnail user_id = {this.props.ad.user_id} />
         <button onClick = {() => {this.props.handleAcceptAd(this.props.ad)}}>accept ad and make a delivery!</button>
         <button onClick = {() => {this.props.showUsersShowPage(this.props.ad.user_id)}}>see this users review page</button>
       </div>
+    )
+    }
+  }
+
+  Thumbnail = () => {
+    if (this.props.handleAcceptAd){
+    return (
+    <div>
+      <Thumbnail user_id = {this.props.ad.user_id} />
+    </div>
     )
     }
   }
@@ -32,7 +41,11 @@ class Ad extends Component {
 
   render(){
   return (
-   <div>
+   <div className = "ad">
+     <div>
+        {this.Thumbnail()}
+        </div>
+     <div>
        <h1>ad</h1>
         <p>food name: {this.props.ad.food_name}</p>
         <p>post code: {this.props.ad.postcode}</p>
@@ -40,6 +53,9 @@ class Ad extends Component {
         {this.deleteButton()}
         {this.acceptAdButton()}
         {this.toggleActiveButton()}
+      </div>
+      
+
         
        <h1></h1>
    </div>

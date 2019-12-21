@@ -4,10 +4,30 @@
 
 .cmp{background-color: #f0f3e9}
 
+.all_ads{background-color: #f0f3e9;
+height: 100px;}
+
 .nav{background-color: #003745;
   height: 30px;
   padding: 50px;}
 
+.ad{
+  display:grid;
+  grid-template-columns: 40% 40%;
+  float:left;
+  
+}
+
+.all_ads_coloumn{
+  display:grid;
+  grid-template-columns: 50% 50%;
+  float:left
+}
+
+.tn_img{
+  height: 70px;
+  width: 70px;
+}
 .nbtn{
   max-width: 320px;
   padding: 3px 24px;

@@ -18,10 +18,12 @@ class MyAds extends Component {
     }
     render(){
         return (
-            <div>
-                <h1> all ads page</h1>
+            <div className = "all_ads"> 
+                <h1 className = "all_ads"> all ads page</h1>
                 <AllAdsFilter handleSubmit={this.props.handleAllAdsFilterSubmit}/>
-                {this.showAds()}
+                <div className = "all_ads_coloumn">
+                    {this.showAds()}
+                </div>
             </div>
           
         );
