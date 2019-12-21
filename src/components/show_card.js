@@ -28,6 +28,7 @@ state= {currentShowCard: null}
                     <h1>show card</h1>
                     <p>users name:{this.state.currentShowCard.show_user.name}</p>
                     <p>users average rating:{this.state.currentShowCard.avg_rating}</p>
+                    <img src= {this.state.currentShowCard.show_user.img}/>
                 </div>
                 
             )

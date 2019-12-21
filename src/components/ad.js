@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import Thumbnail from './thumbnail';
 class Ad extends Component {
 
   deleteButton = () => {
@@ -18,6 +18,7 @@ class Ad extends Component {
     if (this.props.handleAcceptAd){
     return (
     <div>
+      <Thumbnail user_id = {this.props.ad.user_id} />
         <button onClick = {() => {this.props.handleAcceptAd(this.props.ad)}}>accept ad and make a delivery!</button>
         <button onClick = {() => {this.props.showUsersShowPage(this.props.ad.user_id)}}>see this users review page</button>
       </div>
