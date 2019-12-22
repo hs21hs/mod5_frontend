@@ -16,7 +16,7 @@ class MyAds extends Component {
     render(){
         return (
             <div>
-                <h1> ads page</h1>
+                <h1> My ads page</h1>
                 {this.showAds()}
             </div>
           

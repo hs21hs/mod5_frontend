@@ -41,7 +41,7 @@ componentDidMount(){
     render(){
         return (
             <div>
-                <h1> users show page</h1>
+               
                 {this.ShowCard()}
                 {this.showReviews()}
             </div>

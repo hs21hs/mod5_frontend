@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class DonateForm extends Component {
     state = {
         selfDelivery: "no",
-        selfPostcode: "true"
+        selfPostcode: "false"
     }
     
     bindSelfDelivery = (e) => {
@@ -20,22 +20,20 @@ class DonateForm extends Component {
         }
     }
 
+    // <select name = "select1" value = {this.state.selfPostcode} onChange ={this.bindSelfPostcode}>
+    //                         <option value = "true">use my home postcode as the pick up location for this ad</option>
+    //                         <option value = "false">set custom postcode as the pick up location for this ad</option>
+    //                     </select>
+
     addOrDonate = () =>{
         if(this.state.selfDelivery === "no"){
             return(
                 <div>
 
                     <form onSubmit = {this.props.handleSubmit} class = "cmp" >
-                        <label>deliver yourself?</label>
-                        <select name = "select" value = {this.state.selfDelivery} onChange ={this.bindSelfDelivery}>
-                            <option>no</option>
-                            <option>yes</option>
-                        </select>
                         
-                        <select name = "select1" value = {this.state.selfPostcode} onChange ={this.bindSelfPostcode}>
-                            <option value = "true">use my home postcode as the pick up location for this ad</option>
-                            <option value = "false">set custom postcode as the pick up location for this ad</option>
-                        </select>
+                        
+                        
 
                         {this.filterFormOrNot()}
 

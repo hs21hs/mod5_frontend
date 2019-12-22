@@ -24,8 +24,8 @@ state= {currentShowCard: null}
     showCard = ()=> {
         if(this.state.currentShowCard){
             return(
-                <div>
-                    <h1>show card</h1>
+                <div >
+                    <h1>{this.state.currentShowCard.show_user.name}'s review page</h1>
                     <p>users name:{this.state.currentShowCard.show_user.name}</p>
                     <p>users average rating:{this.state.currentShowCard.avg_rating}</p>
                     <img src= {this.state.currentShowCard.show_user.img}/>

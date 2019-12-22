@@ -66,14 +66,12 @@ class Donate extends Component {
     handleSubmit = (e) => {
         e.preventDefault()
         
-        if(e.target.elements.select.value==="no"){
+        
             this.createAd(e)
-        }
+    
            
 
-        if(e.target.elements.select.value==="yes"){
-            this.createDelivery(e)
-        }
+        
     }
 
     //is this way okay? grabbing the last element in array
@@ -91,8 +89,8 @@ class Donate extends Component {
   render(){
   return (
     <div class = "cmp">
-        <h1 class = "cmp">Donate food!</h1>
-        <p class = "cmp">please fill out the details below and wel get your donation underway</p>
+        <h1 class = "cmp">Create an advert</h1>
+        <p class = "cmp">please fill out the details below and we'll find you a rider to help with this donation</p>
          <DonateForm handleSubmit = {this.handleSubmit}/>
          {this.showNewAd()}
          

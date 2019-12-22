@@ -14,14 +14,14 @@ height: 100px;}
 .ad{
   display:grid;
   grid-template-columns: 40% 40%;
-  float:left;
+  
   
 }
 
 .all_ads_coloumn{
   display:grid;
   grid-template-columns: 50% 50%;
-  float:left
+  
 }
 
 .tn_img{

@@ -11,7 +11,7 @@ class MyDeliveries extends Component {
         return this.props.state.myDeliveries.map((dobj) => {
             return( 
             <div>
-                <Delivery dobj = {dobj} key ={dobj.delivery.id} delivery_id = {dobj.delivery.id} />
+                <Delivery updateDelivery = {this.props.updateDelivery} dobj = {dobj} key ={dobj.delivery.id} delivery_id = {dobj.delivery.id} />
                 <ReviewForm createReview = {this.props.createReview} delivery_id = {dobj.delivery.id}/>
             </div>
             )
@@ -34,7 +34,6 @@ class MyDeliveries extends Component {
                         <option value = "rider">deliveries where im the rider</option>
                         <option value = "giver">deliveries where im the giver</option>
                         <option value = "either"> deliveries where im either</option>
-                        <option value = "both"> deliveries where im both</option>
                     </select>
 
                     <button type = "submit">get my deliveries</button>

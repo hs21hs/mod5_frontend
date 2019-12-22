@@ -41,12 +41,12 @@ class Ad extends Component {
 
   render(){
   return (
-   <div className = "ad">
+   <div >
      <div>
         {this.Thumbnail()}
         </div>
-     <div>
-       <h1>ad</h1>
+     <div className = "txt">
+       <h1>advert</h1>
         <p>food name: {this.props.ad.food_name}</p>
         <p>post code: {this.props.ad.postcode}</p>
         <p>active: {this.activeOrNot()}</p>

@@ -9,6 +9,7 @@ import SignUp from './containers/signUp';
 import myDeliveries from './containers/my_deliveries';
 import MyDeliveries from './containers/my_deliveries';
 import ShowPage from './containers/showPage';
+import Home from './containers/home';
 
 class App extends Component {
   state = {
@@ -24,7 +25,7 @@ class App extends Component {
   componentDidMount = () => {
     if(localStorage.getItem("token")){
       
-      this.setState({page: "donate"})
+      this.setState({page: "home"})
       this.getMyAds()
     }
   }
@@ -76,11 +77,11 @@ class App extends Component {
     }
 
     login = ()=> {
-      this.setState({page: "donate"})
+      this.setState({page: "home"})
     }
 
     signUp = ()=> {
-      this.setState({page: "donate"})
+      this.setState({page: "home"})
     }
 
     whichPage = () => {
@@ -101,7 +102,7 @@ class App extends Component {
       }
 
       if (this.state.page === "my deliveries"){
-        return <MyDeliveries getMyDeliveries= {this.myDeliveries} state = {this.state} createReview = {this.createReview}/>
+        return <MyDeliveries updateDelivery = {this.updateDelivery} getMyDeliveries= {this.myDeliveries} state = {this.state} createReview = {this.createReview}/>
       }
      
       if (this.state.page === "logout"){
@@ -116,6 +117,9 @@ class App extends Component {
 
       if (this.state.page === "show page"){
         return <ShowPage state = {this.state}/>
+      }
+      if (this.state.page === "home"){
+        return <Home />
       }
 
     }
@@ -151,17 +155,18 @@ class App extends Component {
     }else{
     return(
     <div class = "nav">
+      <button onClick = {() => {this.switchPage("home")}} class = "nbtn">home</button>
+      <button onClick = {() => {this.switchPage("donate")}} class = "nbtn">create an ad</button>
       <button onClick = {() => {this.switchPage("my ads")}} class = "nbtn">my ads</button>
-      <button onClick = {() => {this.switchPage("donate")}} class = "nbtn">donate</button>
       <button onClick = {() => {this.switchPage("all ads")}} class = "nbtn">all ads</button>
       <button onClick = {() => {this.switchPage("my deliveries")}} class = "nbtn">my deliveries</button>
       <button onClick = {() => {this.switchPage("logout")}} class = "nbtn">logout</button>
-      <button onClick = {() => {this.deleteUser()}} class = "nbtn">delete my account</button>
+      
     </div>
     )
     }
   }
-
+//<button onClick = {() => {this.deleteUser()}} class = "nbtn">delete my account</button>
   acceptAd = (ad) => {
 
       fetch("http://localhost:3000/rdeliveries", {method: "POST",
@@ -239,6 +244,25 @@ const filter = {type: type, status: status}
     console.log(uid)
 this.setState({currentShowUsersId: uid, page: "show page"})
   }
+
+updateDelivery = (did,e) => {
+  e.target.previousElementSibling.innerText = "status: completed"
+  const didy= {did: did}
+  fetch("http://localhost:3000/cdeliveries",{method: "POST",
+      headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json",
+          Authorisation: localStorage.getItem("token")         
+      },
+      body: JSON.stringify(didy)
+    })
+    .then((resp)=>resp.json())
+    .then((json)=>{const newDs = this.state.myDeliveries.filter((d) => {return d.delivery.id !== json.id})
+  this.setState({myDeliveries: [...newDs, json]})})
+  
+  }
+
+
 
   render(){
   return (
