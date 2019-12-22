@@ -8,7 +8,7 @@ class ReviewForm extends Component {
        <h1>Would you lke to leave a review?</h1>
        
        <form onSubmit = {(e) => this.props.createReview(e,this.props.delivery_id)}>
-           <label>please choose ho many stars you would rate your experience with this person</label>
+           <label>please choose how many stars you would rate your experience with this person</label>
            <select name = "rating">
                <option>1</option>
                <option>2</option>

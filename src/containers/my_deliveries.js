@@ -27,7 +27,7 @@ class MyDeliveries extends Component {
                     <select name = "status">
                         <option value = "processing">deliveries with status processing</option>
                         <option value = "completed">deliveries with status completed</option>
-                        <option value = "any">deliveries with any status</option>
+
                     </select>
 
                     <select name = "type">
