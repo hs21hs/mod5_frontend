@@ -94,7 +94,8 @@ class App extends Component {
       }
 
       if (this.state.page === "all ads"){
-        return <AllAds state = {this.state} handleAllAdsFilterSubmit = {this.allAdsFilterSubmit} handleAcceptAd = {this.acceptAd} showUsersShowPage = {this.showUsersShowPage}/>
+        
+        return <AllAds get = {this.getAllAds} state = {this.state} handleAllAdsFilterSubmit = {this.allAdsFilterSubmit} handleAcceptAd = {this.acceptAd} showUsersShowPage = {this.showUsersShowPage}/>
       }
 
       if (this.state.page === "login"){
@@ -102,11 +103,11 @@ class App extends Component {
       }
 
       if (this.state.page === "my deliveries"){
-        return <MyDeliveries updateDelivery = {this.updateDelivery} getMyDeliveries= {this.myDeliveries} state = {this.state} createReview = {this.createReview}/>
+        return <MyDeliveries all = {this.getAllMyDeliveries}updateDelivery = {this.updateDelivery} getMyDeliveries= {this.myDeliveries} state = {this.state} createReview = {this.createReview}/>
       }
      
       if (this.state.page === "logout"){
-        this.setState({myAds: [], allAds: []})
+        this.setState({myAds: [], allAds: [], myDeliveries:[], allAds: [], myDeliveriesStatus: undefined, myDeliveriesType: undefined})
         localStorage.removeItem("token")
         this.setState({page: "login"})
       }
@@ -147,9 +148,9 @@ class App extends Component {
   navBar = () => {
     if(this.state.page === "login" || this.state.page === "sign up"){
       return(
-        <div>
-          <button onClick = {() => {this.switchPage("login")}}>login</button>
-          <button onClick = {() => {this.switchPage("sign up")}}>sign up</button>
+        <div class = "nav">
+          <button onClick = {() => {this.switchPage("login")}} class = "nbtn">login</button>
+          <button onClick = {() => {this.switchPage("sign up")}} class = "nbtn">sign up</button>
         </div>
       )
     }else{
@@ -198,9 +199,24 @@ const filter = {type: type, status: status}
     })
     .then(resp => resp.json())
     .then(json => this.setState({myDeliveries: json}))
-    .then((x) => {this.setState({myDeliveriesStatus: status, myDeliveriesType: type})})
+    .then((x) => {this.setState({myDeliveriesStatus: status, myDeliveriesType: type})})  
+  }
+
+  getAllMyDeliveries = () => {
+    console.log("hey")
+
+    const filter = {type: "either", status: "processing"}
+    fetch("http://localhost:3000/my_deliveries", {method: "POST",
+    headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+        Authorisation: localStorage.getItem("token")
+    },
     
-     
+    body: JSON.stringify(filter)
+    })
+    .then(resp => resp.json())
+    .then(json => this.setState({myDeliveries: json}))
   }
 
   toggleActive = (aid) => {
@@ -262,6 +278,16 @@ updateDelivery = (did,e) => {
   
   }
 
+  getAllAds = () => {
+    fetch("http://localhost:3000/ads/all",{method: "POST",
+    headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+        Authorisation: localStorage.getItem("token")         
+    }
+  }).then((resp)=>resp.json())
+  .then((json)=> this.setState({allAds: json}))
+ }
 
 
   render(){

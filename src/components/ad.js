@@ -18,7 +18,8 @@ class Ad extends Component {
     if (this.props.handleAcceptAd){
     return (
     <div>
-        <button onClick = {() => {this.props.handleAcceptAd(this.props.ad)}}>accept ad and make a delivery!</button>
+        <button onClick = {() => {this.props.handleAcceptAd(this.props.ad)
+        alert("this delivery has been added to `my deliveries page`")}}>accept ad and make a delivery!</button>
         <button onClick = {() => {this.props.showUsersShowPage(this.props.ad.user_id)}}>see this users review page</button>
       </div>
     )
@@ -58,6 +59,12 @@ class Ad extends Component {
 
         
        <h1></h1>
+       <br/>
+       <br/>
+       <br/>
+       <br/>
+       <br/>
+       <br/>
    </div>
 
   );

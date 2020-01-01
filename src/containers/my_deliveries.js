@@ -3,7 +3,9 @@ import Delivery from '../components/delivery';
 import ReviewForm from '../components/review_form';
 class MyDeliveries extends Component {
     
-  
+  componentDidMount(){
+    this.props.all()
+  }
 
     showDeliveries = () => {
     if(this.props.state.myDeliveries){
@@ -31,12 +33,12 @@ class MyDeliveries extends Component {
                     </select>
 
                     <select name = "type">
+                        <option value = "either"> deliveries where im either rider or giver</option>
                         <option value = "rider">deliveries where im the rider</option>
                         <option value = "giver">deliveries where im the giver</option>
-                        <option value = "either"> deliveries where im either</option>
                     </select>
 
-                    <button type = "submit">get my deliveries</button>
+                    <button type = "submit">filter my deliveries</button>
                 </form>
                 {this.showDeliveries()}
             </div>

@@ -7,7 +7,8 @@ class ReviewForm extends Component {
    <div>
        <h1>Would you lke to leave a review?</h1>
        
-       <form onSubmit = {(e) => this.props.createReview(e,this.props.delivery_id)}>
+       <form onSubmit = {(e) => {this.props.createReview(e,this.props.delivery_id)
+    alert("this review has been added to the users review page")}}>
            <label>please choose how many stars you would rate your experience with this person</label>
            <select name = "rating">
                <option>1</option>
@@ -21,6 +22,13 @@ class ReviewForm extends Component {
            <input name = "content"></input>
            <button type = "submit">submit</button>
        </form>
+       <br/>
+       <br/>
+       <br/>
+       <br/>
+       <br/>
+       <br/>
+       <br/>
    </div>
 
   );
