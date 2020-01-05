@@ -25,6 +25,7 @@ class MyAds extends Component {
         return (
             <div className = "all_ads"> 
                 <h1 className = "all_ads"> all ads page</h1>
+                <p>on this page you can find the adverts of other users wo have food to donate. If any of these are conveniantly located, you can click make a delivery to pick up their food and take it to the food bank</p>
                 <p>please enter a postcode in the following format (n1 6pw) to filter your search</p>
                 <AllAdsFilter handleSubmit={this.props.handleAllAdsFilterSubmit}/>
                 <div className = "all_ads_coloumn">

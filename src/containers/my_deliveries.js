@@ -13,7 +13,7 @@ class MyDeliveries extends Component {
         return this.props.state.myDeliveries.map((dobj) => {
             return( 
             <div>
-                <Delivery updateDelivery = {this.props.updateDelivery} dobj = {dobj} key ={dobj.delivery.id} delivery_id = {dobj.delivery.id} />
+                <Delivery review={this.props.review} updateDelivery = {this.props.updateDelivery} dobj = {dobj} key ={dobj.delivery.id} delivery_id = {dobj.delivery.id} />
                 <ReviewForm createReview = {this.props.createReview} delivery_id = {dobj.delivery.id}/>
             </div>
             )

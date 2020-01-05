@@ -103,7 +103,7 @@ class App extends Component {
       }
 
       if (this.state.page === "my deliveries"){
-        return <MyDeliveries all = {this.getAllMyDeliveries}updateDelivery = {this.updateDelivery} getMyDeliveries= {this.myDeliveries} state = {this.state} createReview = {this.createReview}/>
+        return <MyDeliveries review = {this.showUsersShowPage} all = {this.getAllMyDeliveries}updateDelivery = {this.updateDelivery} getMyDeliveries= {this.myDeliveries} state = {this.state} createReview = {this.createReview}/>
       }
      
       if (this.state.page === "logout"){

@@ -12,11 +12,14 @@ class Home extends Component {
        
     </div>
 
+
     <div class = "cmp">
 
         <h2 class = "cmp">if you have food to donate, but dont have a way of transporting it to a food bank, just click "create an ad" and hopefuly one of our riders will accept to pick it up! </h2>
-        <br />
-        <h2 class = "cmp">If you'd like to help in the proccess of delivering food, please just browse through the "all ads" page and find a donation thats conveniantly located for you to collect! </h2>
+        
+    </div>
+    <div class = "cmp">
+      <h2 class = "cmp">If you'd like to help in the proccess of delivering food, please just browse through the "all ads" page and find a donation thats conveniantly located for you to collect! </h2>
     </div>
 </>
    

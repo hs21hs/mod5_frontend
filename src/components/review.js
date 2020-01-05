@@ -14,10 +14,10 @@ class Review extends Component {
   return (
    <div>
        <h1>review</h1>
-  <p>reviewers email:{this.props.review.reviewer_details.email}</p>
-       <p>reviewers name:{this.props.review.reviewer_details.name}</p>
        <p>rating: {this.props.review.review.rating}</p>
        <p>content: {this.props.review.review.content}</p>
+        <br/>
+       <p>reviewers name:{this.props.review.reviewer_details.name}</p>
        <p>reviewers average rating:{this.reviewersAverageRating()}</p>
    </div>
 
