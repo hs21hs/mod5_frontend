@@ -15,8 +15,11 @@ class MyAds extends Component {
     }
     render(){
         return (
-            <div>
-                <h1> My ads page</h1>
+            <div class = "cmp">
+                <h1 class = "cmp"> My ads page</h1>
+                <br/>
+                
+                
                 {this.showAds()}
             </div>
           

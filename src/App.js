@@ -233,8 +233,12 @@ const filter = {type: type, status: status}
     })
     .then((resp)=>resp.json())
     .then((json)=>{
-      const myNewAds = this.state.myAds.filter((ad)=>{if(ad.id !== json.id){return true}})
-      this.setState({myAds:[...myNewAds, json]})
+     let index = undefined
+      const myNewAds = this.state.myAds.filter((ad,i)=>{if(ad.id !== json.id){return true}
+    else{index = i}})
+    console.log(index)
+    myNewAds.splice(index, 0, json)
+      this.setState({myAds:[...myNewAds]})
     })
   }
 

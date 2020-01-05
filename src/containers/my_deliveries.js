@@ -22,8 +22,12 @@ class MyDeliveries extends Component {
     }
     render(){
         return (
-            <div>
-                <h1> deliverys page</h1>
+            <div class = "cmp">
+                <h1 class = "cmp"> deliverys page</h1>
+                <br/>
+                <br/>
+                
+                
                 <form onSubmit = {(e) => {this.props.getMyDeliveries(e)}}>
 
                     <select name = "status">
