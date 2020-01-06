@@ -14,11 +14,11 @@ class Review extends Component {
   return (
    <div>
        <h1>review</h1>
-       <p>rating: {this.props.review.review.rating}</p>
+       <p>rating: {this.props.review.review.rating}/5</p>
        <p>content: {this.props.review.review.content}</p>
         <br/>
        <p>reviewers name:{this.props.review.reviewer_details.name}</p>
-       <p>reviewers average rating:{this.reviewersAverageRating()}</p>
+       <p>reviewers average rating:{this.reviewersAverageRating()}/5</p>
    </div>
 
   );
