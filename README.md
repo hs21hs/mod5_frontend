@@ -4,12 +4,7 @@ to run this app please start the backend from the following link: https://github
 then please run the frontend using the "npm start" command
 
 
-
-
-
-
-
-
+<img src= "./app/assets/images/nowaste.png" />
 
 
 
