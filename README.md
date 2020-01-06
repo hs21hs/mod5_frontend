@@ -1,3 +1,16 @@
+This application is built with React JS and Ruby on Rails. It is a website which helps reduce food waste. Users may have food they would like to donate, but may not have the means to transport the food to where it needs to go. We allow users to create an advert saying that they have certain food at a certain postcode. Other users can than filter through adverts by location and help tp pick up and transport the food to a food bank.
+
+to run this app please start the backend from the following link: https://github.com/hs21hs/mod5_backend
+then please run the frontend using the "npm start" command
+
+
+<img src= "./nowaste.png" />
+
+
+
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
