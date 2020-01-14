@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import serverURL from '../serverURL/serverURL'
 
 class Thumbnail extends Component {
     state= {currentShowCard: null}
 
     componentDidMount(){
         const showUsersId = {showUsersId: this.props.user_id}
-        fetch("http://localhost:3000/reviews/show_card",{method: "POST",
+        fetch(serverURL+"/reviews/show_card",{method: "POST",
       headers: {
           "Content-Type": "application/json",
           "Accept": "application/json",

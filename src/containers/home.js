@@ -19,7 +19,8 @@ class Home extends Component {
         
     </div>
     <div class = "cmp">
-      <h2 class = "cmp">If you'd like to help in the proccess of delivering food, please just browse through the "all ads" page and find a donation thats conveniantly located for you to collect! </h2>
+      <h2 class = "cmp">If you'd like to help in the proccess of delivering food, please just browse through the "all ads" page and find a donation that's 
+conveniently located for you to collect! </h2>
     </div>
 </>
    

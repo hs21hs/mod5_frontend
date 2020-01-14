@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import serverURL from '../serverURL/serverURL'
 
 class ShowCard extends Component {
 state= {currentShowCard: null}
@@ -7,7 +8,7 @@ state= {currentShowCard: null}
         if (this.props.state.currentShowUsersId){
         const showUsersId = {showUsersId: this.props.state.currentShowUsersId}
 
-        fetch("http://localhost:3000/reviews/show_card",{method: "POST",
+        fetch(serverURL+"/reviews/show_card",{method: "POST",
       headers: {
           "Content-Type": "application/json",
           "Accept": "application/json",

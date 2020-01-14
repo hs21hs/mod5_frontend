@@ -3,6 +3,8 @@ This application is built with React JS and Ruby on Rails. It is a website which
 to run this app please start the backend from the following link: https://github.com/hs21hs/mod5_backend
 then please run the frontend using the "npm start" command
 
+the default port number for the server is 3000. You can set it manually at file path "/src/serverURL/serverURL.js"
+
 
 <img src= "./nowaste.png" />
 

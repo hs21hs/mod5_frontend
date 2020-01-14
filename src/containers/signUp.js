@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import serverURL from '../serverURL/serverURL'
 
 class SignUp extends Component {
 
@@ -13,7 +13,7 @@ class SignUp extends Component {
         e.preventDefault()
         const details = {user:{password: this.state.password, email:this.state.email, name:this.state.name}}
 
-        fetch("http://localhost:3000/users", {method: "POST",
+        fetch(serverURL+"/users", {method: "POST",
         headers: {
             "Content-Type": "application/json",
             "Accept": "application/json"

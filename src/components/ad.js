@@ -60,11 +60,6 @@ class Ad extends Component {
         
        <h1></h1>
        <br/>
-       <br/>
-       <br/>
-       <br/>
-       <br/>
-       <br/>
    </div>
 
   );

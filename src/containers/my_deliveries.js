@@ -24,11 +24,12 @@ class MyDeliveries extends Component {
         return (
             <div class = "cmp">
                 <h1 class = "cmp"> deliverys page</h1>
-                <br/>
+                <p class="cmp">If someone's seen your ad and accepted to pickup your food or vice versa, it will show as a delivery down below!</p>
                 <br/>
                 
                 
-                <form onSubmit = {(e) => {this.props.getMyDeliveries(e)}}>
+                
+                <form class = "cmp" onSubmit = {(e) => {this.props.getMyDeliveries(e)}}>
 
                     <select name = "status">
                         <option value = "processing">deliveries with status processing</option>

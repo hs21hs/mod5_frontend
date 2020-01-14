@@ -10,6 +10,7 @@ import myDeliveries from './containers/my_deliveries';
 import MyDeliveries from './containers/my_deliveries';
 import ShowPage from './containers/showPage';
 import Home from './containers/home';
+import serverURL from './serverURL/serverURL'
 
 class App extends Component {
   state = {
@@ -31,7 +32,7 @@ class App extends Component {
   }
   
     getMyAds = () => {
-      fetch("http://localhost:3000/my_ads",
+      fetch(serverURL+"/my_ads",
       {headers: {
         Authorisation: localStorage.getItem("token")
       }})
@@ -52,7 +53,7 @@ class App extends Component {
     }
 
     deleteAd = (ad_id) => {
-      fetch("http://localhost:3000/ads/"+ad_id, {method: "DELETE",
+      fetch(serverURL+"/ads/"+ad_id, {method: "DELETE",
         headers: {
             "Content-Type": "application/json",
             "Accept": "application/json",
@@ -64,7 +65,7 @@ class App extends Component {
     }
 
     deleteUser = () => {
-      fetch("http://localhost:3000/users/delete", {method: "DELETE",
+      fetch(serverURL+"/users/delete", {method: "DELETE",
         headers: {
             "Content-Type": "application/json",
             "Accept": "application/json",
@@ -132,7 +133,7 @@ class App extends Component {
       const postcode = e.target.elements.postcode.value
       const filter = {radius: radius, postcode: postcode}
 
-      fetch("http://localhost:3000/ads/filter",{method: "POST",
+      fetch(serverURL+"/ads/filter",{method: "POST",
       headers: {
           "Content-Type": "application/json",
           "Accept": "application/json",
@@ -170,7 +171,7 @@ class App extends Component {
 //<button onClick = {() => {this.deleteUser()}} class = "nbtn">delete my account</button>
   acceptAd = (ad) => {
 
-      fetch("http://localhost:3000/rdeliveries", {method: "POST",
+      fetch(serverURL+"/rdeliveries", {method: "POST",
       headers: {
           "Content-Type": "application/json",
           "Accept": "application/json",
@@ -188,7 +189,7 @@ class App extends Component {
 const type = e.target.elements.type.value
 const status = e.target.elements.status.value
 const filter = {type: type, status: status}
-    fetch("http://localhost:3000/my_deliveries", {method: "POST",
+    fetch(serverURL+"/my_deliveries", {method: "POST",
     headers: {
         "Content-Type": "application/json",
         "Accept": "application/json",
@@ -206,7 +207,7 @@ const filter = {type: type, status: status}
     console.log("hey")
 
     const filter = {type: "either", status: "processing"}
-    fetch("http://localhost:3000/my_deliveries", {method: "POST",
+    fetch(serverURL+"/my_deliveries", {method: "POST",
     headers: {
         "Content-Type": "application/json",
         "Accept": "application/json",
@@ -222,7 +223,7 @@ const filter = {type: type, status: status}
   toggleActive = (aid) => {
     console.log(aid)
     const a = {ad_id: aid}
-    fetch("http://localhost:3000/ads/update_active", {method: "PATCH",
+    fetch(serverURL+"/ads/update_active", {method: "PATCH",
     headers: {
         "Content-Type": "application/json",
         "Accept": "application/json",
@@ -248,7 +249,7 @@ const filter = {type: type, status: status}
     const review = {review: {delivery_id: did, rating: e.target.elements.rating.value, content: e.target.elements.content.value}}
     console.log(review)
 
-    fetch("http://localhost:3000/reviews",{method: "POST",
+    fetch(serverURL+"/reviews",{method: "POST",
       headers: {
           "Content-Type": "application/json",
           "Accept": "application/json",
@@ -268,7 +269,7 @@ this.setState({currentShowUsersId: uid, page: "show page"})
 updateDelivery = (did,e) => {
   e.target.previousElementSibling.innerText = "status: completed"
   const didy= {did: did}
-  fetch("http://localhost:3000/cdeliveries",{method: "POST",
+  fetch(serverURL+"/cdeliveries",{method: "POST",
       headers: {
           "Content-Type": "application/json",
           "Accept": "application/json",
@@ -283,7 +284,7 @@ updateDelivery = (did,e) => {
   }
 
   getAllAds = () => {
-    fetch("http://localhost:3000/ads/all",{method: "POST",
+    fetch(serverURL+"/ads/all",{method: "POST",
     headers: {
         "Content-Type": "application/json",
         "Accept": "application/json",

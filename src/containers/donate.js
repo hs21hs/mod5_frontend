@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import DonateForm from '../components/donate_form';
 import NewAd from '../components/new_ad';
+import serverURL from '../serverURL/serverURL'
+
 class Donate extends Component {
     state = {showNewAd: false}
 
@@ -26,7 +28,7 @@ class Donate extends Component {
             
              
 
-        fetch("http://localhost:3000/ads", {method: "POST",
+        fetch(serverURL+"/ads", {method: "POST",
         headers: {
             "Content-Type": "application/json",
             "Accept": "application/json",
@@ -51,7 +53,7 @@ class Donate extends Component {
             }
         }
 
-        fetch("http://localhost:3000/gdeliveries", {method: "POST",
+        fetch(serverURL+"/gdeliveries", {method: "POST",
         headers: {
             "Content-Type": "application/json",
             "Accept": "application/json",
@@ -91,7 +93,8 @@ class Donate extends Component {
     <div class = "cmp">
         <h1 class = "cmp">Create an advert</h1>
         <p class = "cmp">please fill out the details below and we'll find you a rider to help with this donation</p>
-         <DonateForm handleSubmit = {this.handleSubmit}/>
+        <p class = "cmp">please enter postcode with correct spacing (e.g. n1 6pw)</p>
+        <DonateForm handleSubmit = {this.handleSubmit}/>
          {this.showNewAd()}
          
     </div>

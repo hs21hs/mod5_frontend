@@ -17,6 +17,7 @@ class MyAds extends Component {
         return (
             <div class = "cmp">
                 <h1 class = "cmp"> My ads page</h1>
+                <p class = "cmp">Here's where you can see all the ads you've created</p>
                 <br/>
                 
                 

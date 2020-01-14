@@ -24,11 +24,6 @@ class ReviewForm extends Component {
        </form>
        <br/>
        <br/>
-       <br/>
-       <br/>
-       <br/>
-       <br/>
-       <br/>
    </div>
 
   );
